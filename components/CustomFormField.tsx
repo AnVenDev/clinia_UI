@@ -3,7 +3,6 @@
 import React from 'react';
 import {
     FormControl,
-    FormDescription,
     FormField,
     FormItem,
     FormLabel,
@@ -12,11 +11,12 @@ import {
 import 'react-phone-number-input/style.css'
 import PhoneInput from 'react-phone-number-input'
 import { Input } from "@/components/ui/input"
-import { Control } from 'react-hook-form';
-import { FormFieldType } from './forms/PatientForm';
-import Image from 'next/image';
-
-type E164Number = `+${number}`;
+import { Control } from 'react-hook-form'
+import { FormFieldType } from './forms/PatientForm'
+import Image from 'next/image'
+import {E164Number} from "libphonenumber-js/core"
+import "react-datepicker/dist/react-datepicker.css"
+import DatePicker from "react-datepicker"
 
 interface CustomProps {
     control: Control<any>
@@ -33,8 +33,9 @@ interface CustomProps {
     renderSkeleton?: (field:any) => React.ReactNode
 }
 
+// RENDER A SPECIFIC FORM FIELD INPUT TYPE BASED ON GIVEN DATA
 const RenderField = ({field, props}: {field:any; props:CustomProps}) => {
-    const {fieldType, iconSrc, iconAlt, placeholder} = props;
+    const {fieldType, iconSrc, iconAlt, placeholder, showTimeSelect, dateFormat, renderSkeleton} = props;
 
     switch (fieldType) {
         case FormFieldType.INPUT:
@@ -56,6 +57,7 @@ const RenderField = ({field, props}: {field:any; props:CustomProps}) => {
                     </FormControl>
                 </div>
             )
+
         case FormFieldType.PHONE_INPUT:
             return (
                 <FormControl>
@@ -70,11 +72,40 @@ const RenderField = ({field, props}: {field:any; props:CustomProps}) => {
                     />
                 </FormControl>
             )
+
+        case FormFieldType.DATE_PICKER:
+            return (
+                <div className='flex rounded-md mt-2 border border-[var(--color-light-200)] bg-[var(--color-dark-400)]'>
+                  
+                    <Image
+                        src="/assets/icons/calendar.svg"
+                        height={24}
+                        width={24}
+                        alt='calendar'
+                        className='ml-2'
+                    />
+        
+                    <FormControl>
+                        <DatePicker 
+                            selected={field.value}
+                            onChange={(date) => field.onChange(date)}
+                            dateFormat={dateFormat ?? 'MM/dd/yyyy'}
+                            showTimeSelect={showTimeSelect ?? false}
+                            timeInputLabel='Time:'
+                            wrapperClassName='date-picker'
+                        />
+                    </FormControl>
+                </div>
+            )
+
+        case FormFieldType.SKELETON:
+            return renderSkeleton ? renderSkeleton(field): null
         default:
             break;
     }
 }
 
+// DEFINE CUSTOM FORM FIELD BASED ON GIVEN DATA
 export const CustomFormField = (props: CustomProps) => {
     const {control, fieldType, name, label} = props;
 

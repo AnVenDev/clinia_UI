@@ -353,6 +353,8 @@
   align-items: center;
 }
 
+
+
 .react-datepicker,
 .react-datepicker__time,
 .react-datepicker__header,
@@ -360,16 +362,22 @@
 .react-datepicker__day-name,
 .react-datepicker__day,
 .react-datepicker-time__header {
-  background-color: #1a1d21;
+  background-color: #fff !important;
   border-color: #363a3d;
   color: #abb8c4;
+}
+
+.react-datepicker__day-names {
+  background-color: #fff;
 }
 
 .react-datepicker__current-month,
 .react-datepicker__day-name,
 .react-datepicker-time__header {
-  color: #ffffff;
+  background-color: #fff !important;
 }
+
+.react-datepicker__day
 
 .react-datepicker__triangle {
   fill: #1a1d21;
@@ -403,18 +411,41 @@
 
 .react-datepicker__time-list-item {
   display: flex;
-  align-items: center;
+  /* align-items: center; */
 }
 
 /* REACT PHONE NUMBER INPUT OVERRIDES */
 .PhoneInputInput {
-  outline: none;
-  margin-left: 4px;
-  background: #1a1d21;
-  font-size: 14px;
-  font-weight: 500;
+  outline: none !important;
+  margin-left: 4px !important;
+  background: #1a1d21 !important;
+  font-size: 14px !important;
+  font-weight: 500 !important;
 }
 
 .PhoneInputInput::placeholder {
-  color: #1a1d21;
+  color: #1a1d21 !important;
+}
+
+.PhoneInputCountrySelect {
+  background-color: #1a1d21 !important;
+  color: #fff !important;
+  border-color: #cbd5e0;
+  max-height: 200px;
+  overflow-y: auto;
+  scrollbar-width: thin;
+  scrollbar-color: #a0aec0 transparent;
+}
+
+.PhoneInputCountrySelect::-webkit-scrollbar {
+  width: 8px;
+}
+
+.PhoneInputCountrySelect::-webkit-scrollbar-thumb {
+  background-color: #cbd5e0;
+  border-radius: 4px;
+}
+
+.PhoneInputCountrySelect::-webkit-scrollbar-track {
+  background: transparent;
 }

@@ -20,6 +20,7 @@ export enum FormFieldType {
     SKELETON = 'skeleton'
 }
 
+// PATIENT LOGIN FORM
 export const PatientForm = () => {
     const router = useRouter();
     const [isLoading, setIsLoading] = useState(false);
@@ -33,6 +34,7 @@ export const PatientForm = () => {
         },
     })
      
+    // LOGIN FORM onSubmit
     const onSubmit = async({name, email, phone}: z.infer<typeof UserFormValidation>) => {
         setIsLoading(true);
         
@@ -46,6 +48,7 @@ export const PatientForm = () => {
         }
     }
 
+    // DEFINE FORM FIELD STRUCTURE
     return (
         <Form {...form}>
           <form 
@@ -60,27 +63,28 @@ export const PatientForm = () => {
                 control={form.control}
                 fieldType={FormFieldType.INPUT}
                 name="name"
-                label="Full name"
-                placeholder="Name"
+                label="Full Name"
+                placeholder="Andrea Venè"
                 iconSrc="/assets/icons/user.svg"
-                iconAlt="user"/>
+                iconAlt="user"
+            />
 
             <CustomFormField 
                 control={form.control}
                 fieldType={FormFieldType.INPUT}
                 name="email"
                 label="Email"
-                placeholder="email@gmail.com"
+                placeholder="andrea_vene@gmail.com"
                 iconSrc="/assets/icons/email.svg"
-                iconAlt="email"/>
+                iconAlt="email"
+            />
 
             <CustomFormField 
                 control={form.control}
                 fieldType={FormFieldType.PHONE_INPUT}
                 name="phone"
                 label="Phone number"
-                placeholder="3xx-xxx-xxxx"
-                />
+            />
 
             <SubmitButton isLoading={isLoading}>
                 Get Started

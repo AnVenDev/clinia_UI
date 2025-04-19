@@ -7,6 +7,7 @@ export default function Home() {
     <div className="flex h-screen max-h-screen">
       {/* TODO:  OTP VERIFICATION*/}
       
+      {/* Login Page Left Side */}
       <section className="remove-scrollbar container my-auto">
         <div className="sub-container max-w-[496px]">
           <Image 
@@ -30,6 +31,7 @@ export default function Home() {
         </div>
       </section>
 
+      {/* Login Page Right Side */}
       <Image 
         src="/assets/images/onboarding-img.png"
         width={1000}

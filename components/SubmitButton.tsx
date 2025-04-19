@@ -9,6 +9,7 @@ interface ButtonProps {
     children: React.ReactNode
 }
 
+// DEFINE SUBMIT BUTTON COMPONENT
 const SubmitButton = ({isLoading, className, children}: ButtonProps) => {
   return (
     <Button type='submit' disabled={isLoading} className={className ?? 'shad-primary-btn w-full cursor-pointer'}>

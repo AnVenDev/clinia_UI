@@ -1,5 +1,6 @@
 import { z } from "zod";
 
+// USER FORM VALIDATION LOGIC
 export const UserFormValidation = z.object({
   name: z.string()
     .min(2, "Username must be at least 2 characters.")

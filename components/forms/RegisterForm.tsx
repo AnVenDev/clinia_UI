@@ -54,7 +54,7 @@ export const RegisterForm = ({ user }: { user: User }) => {
         className="space-y-8 text-[var(--color-light-200)]"
       >
         <section className="mb-12 space-y-4">
-          <h1 className="header">Welcome to Clina!</h1>
+          <h1 className="header">Welcome to Clina</h1>
           <p className="text-dark-700">Let us know more about yourself</p>
         </section>
 

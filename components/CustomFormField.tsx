@@ -8,15 +8,22 @@ import {
   FormLabel,
   FormMessage,
 } from "@/components/ui/form";
+import {
+  Select,
+  SelectContent,
+  SelectTrigger,
+  SelectValue,
+} from "@/components/ui/select";
 import "react-phone-number-input/style.css";
 import PhoneInput from "react-phone-number-input";
 import { Input } from "@/components/ui/input";
-import { Control } from "react-hook-form";
+import { Control, Form } from "react-hook-form";
 import { FormFieldType } from "./forms/PatientForm";
 import Image from "next/image";
 import { E164Number } from "libphonenumber-js/core";
 import "react-datepicker/dist/react-datepicker.css";
 import DatePicker from "react-datepicker";
+import { SelectItem } from "@/components/ui/select";
 
 interface CustomProps {
   control: Control<any>;
@@ -109,6 +116,26 @@ const RenderField = ({ field, props }: { field: any; props: CustomProps }) => {
 
     case FormFieldType.SKELETON:
       return renderSkeleton ? renderSkeleton(field) : null;
+
+    case FormFieldType.SELECT:
+      return (
+        <FormControl>
+          <Select
+            value={field.value}
+            onValueChange={field.onChange}
+            name={field.name}
+          >
+            <SelectTrigger className="shad-select-trigger w-full">
+              <SelectValue placeholder={props.placeholder} />
+            </SelectTrigger>
+
+            <SelectContent className="shad-select-content">
+              {props.children}
+            </SelectContent>
+          </Select>
+        </FormControl>
+      );
+
     default:
       break;
   }

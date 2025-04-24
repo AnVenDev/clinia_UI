@@ -18,6 +18,7 @@ export enum FormFieldType {
   DATE_PICKER = "datePicker",
   SELECT = "select",
   SKELETON = "skeleton",
+  REACT_SELECT = "skeleton",
 }
 
 // PATIENT LOGIN FORM

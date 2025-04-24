@@ -240,6 +240,11 @@
     @apply h-11;
   }
 
+  /* TO OVERRIDE THE SHADCN DEFAULT HEIGHT */
+  .shad-select-trigger[data-size="default"] {
+    height: 44px;
+  }
+
   .shad-select-trigger {
     @apply bg-[var(--color-dark-400)] placeholder:text-[var(--color-dark-600)] border-[var(--color-black-500)] h-11 focus:ring-0 focus:ring-offset-0;
   }

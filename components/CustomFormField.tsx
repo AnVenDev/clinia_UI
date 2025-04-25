@@ -17,14 +17,13 @@ import {
 import "react-phone-number-input/style.css";
 import PhoneInput from "react-phone-number-input";
 import { Input } from "@/components/ui/input";
-import { Control, Form } from "react-hook-form";
+import { Control } from "react-hook-form";
 import { FormFieldType } from "./forms/PatientForm";
 import Image from "next/image";
 import { E164Number } from "libphonenumber-js/core";
 import "react-datepicker/dist/react-datepicker.css";
 import DatePicker from "react-datepicker";
-import { SelectItem } from "@/components/ui/select";
-import { Textarea } from "./ui/textarea";
+import { Textarea } from "@/components/ui/textarea";
 
 interface CustomProps {
   control: Control<any>;
@@ -127,7 +126,7 @@ const RenderField = ({ field, props }: { field: any; props: CustomProps }) => {
             name={field.name}
           >
             <SelectTrigger className="shad-select-trigger w-full">
-              <SelectValue placeholder={placeholder} />
+              <SelectValue placeholder={props.placeholder} />
             </SelectTrigger>
 
             <SelectContent className="shad-select-content">

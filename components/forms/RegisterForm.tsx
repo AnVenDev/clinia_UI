@@ -11,7 +11,12 @@ import { useRouter } from "next/navigation";
 import { createUser } from "@/lib/actions/patient.actions";
 import { FormFieldType } from "./PatientForm";
 import { RadioGroup, RadioGroupItem } from "../ui/radio-group";
-import { Doctors, GenderOptions, PatientFormDefaultValues } from "@/constants";
+import {
+  Doctors,
+  GenderOptions,
+  IdentificationTypes,
+  PatientFormDefaultValues,
+} from "@/constants";
 import { Label } from "../ui/label";
 import { SelectItem } from "@/components/ui/select";
 import Image from "next/image";
@@ -35,7 +40,7 @@ export const RegisterForm = ({ user }: { user: User }) => {
     const subscription = form.watch((values) => {
       console.log("Form values:", values);
     });
-    form.reset();
+    console.log(form.getValues());
     return () => subscription.unsubscribe();
   }, [form]);
 
@@ -252,6 +257,50 @@ export const RegisterForm = ({ user }: { user: User }) => {
             placeholder="Ibuprofen 200mg, Paracetamol 500mg"
           />
         </div>
+
+        <div className="flex flex-col gap-6 xl:flex-row">
+          {/* EMERGENCY CONTACT NAME */}
+          <CustomFormField
+            fieldType={FormFieldType.TEXTAREA}
+            control={form.control}
+            name="familyMadicalHistory"
+            label="Family medical history"
+            placeholder="Mother had brain cancer, Father had hearth disease"
+          />
+
+          {/* EMERGENCY CONTACT NUMBER*/}
+          <CustomFormField
+            fieldType={FormFieldType.TEXTAREA}
+            control={form.control}
+            name="pastMedicalHistory"
+            label="Past medical history"
+            placeholder="Appendectomy, Tonsillectomy"
+          />
+        </div>
+
+        <section className="space-y-6">
+          <div className="mb-9 space-y-1">
+            <h2 className="sub-header">Identification and Verification</h2>
+          </div>
+        </section>
+
+        <CustomFormField
+          fieldType={FormFieldType.SELECT}
+          control={form.control}
+          name="identificationType"
+          label="Identification Type"
+          placeholder="Select an identification type"
+        >
+          {IdentificationTypes.map((type) => (
+            <SelectItem
+              key={type}
+              value={type}
+              className="flex cursor-pointer items-center gap-2 text-white p-2"
+            >
+              {type}
+            </SelectItem>
+          ))}
+        </CustomFormField>
 
         <SubmitButton isLoading={isLoading}>Submit</SubmitButton>
       </form>

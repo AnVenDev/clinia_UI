@@ -5,10 +5,10 @@ import { z } from "zod";
 import { Form, FormControl } from "@/components/ui/form";
 import { CustomFormField } from "../CustomFormField";
 import SubmitButton from "../SubmitButton";
-import { useEffect, useState } from "react";
-import { PatientFormValidation, UserFormValidation } from "@/lib/validation";
+import { useState } from "react";
+import { PatientFormValidation } from "@/lib/validation";
 import { useRouter } from "next/navigation";
-import { createUser } from "@/lib/actions/patient.actions";
+import { registerPatient } from "@/lib/actions/patient.actions";
 import { FormFieldType } from "./PatientForm";
 import { RadioGroup, RadioGroupItem } from "../ui/radio-group";
 import {
@@ -37,27 +37,45 @@ export const RegisterForm = ({ user }: { user: User }) => {
     },
   });
 
-  useEffect(() => {
-    const subscription = form.watch((values) => {
-      console.log("Form values:", values);
-    });
-    console.log(form.getValues());
-    return () => subscription.unsubscribe();
-  }, [form]);
+  // useEffect(() => {
+  //   const subscription = form.watch((values) => {
+  //     console.log("Form values:", values);
+  //   });
+  //   console.log(form.getValues());
+  //   return () => subscription.unsubscribe();
+  // }, [form]);
 
   // SUBMIT DATA FOR REGISTRATION
-  const onSubmit = async ({
-    name,
-    email,
-    phone,
-  }: z.infer<typeof UserFormValidation>) => {
+  const onSubmit = async (values: z.infer<typeof PatientFormValidation>) => {
     setIsLoading(true);
 
-    try {
-      const userData = { name, email, phone };
-      const user = await createUser(userData);
+    let formData;
 
-      if (user) router.push(`/patients/${user.$id}/register`);
+    if (
+      values.identificationDocument &&
+      values.identificationDocument.length > 0
+    ) {
+      const blobFile = new Blob([values.identificationDocument[0]], {
+        type: values.identificationDocument[0].type,
+      });
+
+      formData = new FormData();
+      formData.append("blobFile", blobFile);
+      formData.append("fileName", values.identificationDocument[0].name);
+    }
+
+    try {
+      const patientData = {
+        ...values,
+        userId: user.$id,
+        birthDate: new Date(values.birthDate),
+        identificationDocument: formData,
+      };
+
+      // @ts-ignore
+      const patient = await registerPatient(patientData);
+
+      if (patient) router.push(`/patients/${user.$id}/new-appointment`);
     } catch (error) {
       console.log(error);
     }
@@ -220,7 +238,7 @@ export const RegisterForm = ({ user }: { user: User }) => {
         </div>
 
         <div className="flex flex-col gap-6 xl:flex-row">
-          {/* EMERGENCY CONTACT NAME */}
+          {/* INSURANCE PROVIDER NAME */}
           <CustomFormField
             fieldType={FormFieldType.INPUT}
             control={form.control}
@@ -229,9 +247,9 @@ export const RegisterForm = ({ user }: { user: User }) => {
             placeholder="BlueCross BlueShield"
           />
 
-          {/* EMERGENCY CONTACT NUMBER*/}
+          {/* INSURANCE POLICY NUMBER*/}
           <CustomFormField
-            fieldType={FormFieldType.PHONE_INPUT}
+            fieldType={FormFieldType.INPUT}
             control={form.control}
             name="insurancePolicyNumber"
             label="Insurance policy number"
@@ -249,7 +267,7 @@ export const RegisterForm = ({ user }: { user: User }) => {
             placeholder="Peanuts, Penicillin, Pollen"
           />
 
-          {/* EMERGENCY CONTACT NUMBER*/}
+          {/* CURRENT MEDICATION */}
           <CustomFormField
             fieldType={FormFieldType.TEXTAREA}
             control={form.control}
@@ -260,7 +278,7 @@ export const RegisterForm = ({ user }: { user: User }) => {
         </div>
 
         <div className="flex flex-col gap-6 xl:flex-row">
-          {/* EMERGENCY CONTACT NAME */}
+          {/* FAMILY MADICAL HISTORY */}
           <CustomFormField
             fieldType={FormFieldType.TEXTAREA}
             control={form.control}
@@ -269,7 +287,7 @@ export const RegisterForm = ({ user }: { user: User }) => {
             placeholder="Mother had brain cancer, Father had hearth disease"
           />
 
-          {/* EMERGENCY CONTACT NUMBER*/}
+          {/* PAST MEDICAL HISTORY */}
           <CustomFormField
             fieldType={FormFieldType.TEXTAREA}
             control={form.control}

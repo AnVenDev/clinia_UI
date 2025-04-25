@@ -213,6 +213,46 @@ export const RegisterForm = ({ user }: { user: User }) => {
           />
         </div>
 
+        <div className="flex flex-col gap-6 xl:flex-row">
+          {/* EMERGENCY CONTACT NAME */}
+          <CustomFormField
+            fieldType={FormFieldType.INPUT}
+            control={form.control}
+            name="insuranceProvider"
+            label="Insurance provider"
+            placeholder="BlueCross BlueShield"
+          />
+
+          {/* EMERGENCY CONTACT NUMBER*/}
+          <CustomFormField
+            fieldType={FormFieldType.PHONE_INPUT}
+            control={form.control}
+            name="insurancePolicyNumber"
+            label="Insurance policy number"
+            placeholder="ABC123456789"
+          />
+        </div>
+
+        <div className="flex flex-col gap-6 xl:flex-row">
+          {/* EMERGENCY CONTACT NAME */}
+          <CustomFormField
+            fieldType={FormFieldType.TEXTAREA}
+            control={form.control}
+            name="allergies"
+            label="Allergies (if any)"
+            placeholder="Peanuts, Penicillin, Pollen"
+          />
+
+          {/* EMERGENCY CONTACT NUMBER*/}
+          <CustomFormField
+            fieldType={FormFieldType.TEXTAREA}
+            control={form.control}
+            name="currentMedication"
+            label="Current medication (if any)"
+            placeholder="Ibuprofen 200mg, Paracetamol 500mg"
+          />
+        </div>
+
         <SubmitButton isLoading={isLoading}>Submit</SubmitButton>
       </form>
     </Form>

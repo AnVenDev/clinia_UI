@@ -24,6 +24,7 @@ import { E164Number } from "libphonenumber-js/core";
 import "react-datepicker/dist/react-datepicker.css";
 import DatePicker from "react-datepicker";
 import { SelectItem } from "@/components/ui/select";
+import { Textarea } from "./ui/textarea";
 
 interface CustomProps {
   control: Control<any>;
@@ -126,13 +127,25 @@ const RenderField = ({ field, props }: { field: any; props: CustomProps }) => {
             name={field.name}
           >
             <SelectTrigger className="shad-select-trigger w-full">
-              <SelectValue placeholder={props.placeholder} />
+              <SelectValue placeholder={placeholder} />
             </SelectTrigger>
 
             <SelectContent className="shad-select-content">
               {props.children}
             </SelectContent>
           </Select>
+        </FormControl>
+      );
+
+    case FormFieldType.TEXTAREA:
+      return (
+        <FormControl>
+          <Textarea
+            placeholder={placeholder}
+            {...field}
+            className="shad-textArea"
+            disabled={props.disabled}
+          />
         </FormControl>
       );
 

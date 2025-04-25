@@ -6,7 +6,7 @@ import { Form, FormControl } from "@/components/ui/form";
 import { CustomFormField } from "../CustomFormField";
 import SubmitButton from "../SubmitButton";
 import { useEffect, useState } from "react";
-import { UserFormValidation } from "@/lib/validation";
+import { PatientFormValidation, UserFormValidation } from "@/lib/validation";
 import { useRouter } from "next/navigation";
 import { createUser } from "@/lib/actions/patient.actions";
 import { FormFieldType } from "./PatientForm";
@@ -20,14 +20,15 @@ import {
 import { Label } from "../ui/label";
 import { SelectItem } from "@/components/ui/select";
 import Image from "next/image";
+import { FileUploader } from "../FileUploader";
 
 // PATIENT LOGIN FORM
 export const RegisterForm = ({ user }: { user: User }) => {
   const router = useRouter();
   const [isLoading, setIsLoading] = useState(false);
 
-  const form = useForm<z.infer<typeof UserFormValidation>>({
-    resolver: zodResolver(UserFormValidation),
+  const form = useForm<z.infer<typeof PatientFormValidation>>({
+    resolver: zodResolver(PatientFormValidation),
     defaultValues: {
       ...PatientFormDefaultValues,
       name: "",
@@ -44,7 +45,7 @@ export const RegisterForm = ({ user }: { user: User }) => {
     return () => subscription.unsubscribe();
   }, [form]);
 
-  // REGISTER FORM onSubmit
+  // SUBMIT DATA FOR REGISTRATION
   const onSubmit = async ({
     name,
     email,
@@ -284,23 +285,78 @@ export const RegisterForm = ({ user }: { user: User }) => {
           </div>
         </section>
 
+        <div className="flex flex-col gap-6 xl:flex-row">
+          {/* IDENTIFICATION TYPE */}
+          <CustomFormField
+            fieldType={FormFieldType.SELECT}
+            control={form.control}
+            name="identificationType"
+            label="Identification Type"
+            placeholder="Select an identification type"
+          >
+            {IdentificationTypes.map((type) => (
+              <SelectItem
+                key={type}
+                value={type}
+                className="flex cursor-pointer items-center gap-2 text-white p-2"
+              >
+                {type}
+              </SelectItem>
+            ))}
+          </CustomFormField>
+
+          {/* IDENTIFICATION NUMBER */}
+          <CustomFormField
+            fieldType={FormFieldType.INPUT}
+            control={form.control}
+            name="identificationNumber"
+            label="Identification number"
+            placeholder="123456789"
+          />
+        </div>
+
+        {/* IDENTIFICATION DOCUMENT */}
         <CustomFormField
-          fieldType={FormFieldType.SELECT}
           control={form.control}
-          name="identificationType"
-          label="Identification Type"
-          placeholder="Select an identification type"
-        >
-          {IdentificationTypes.map((type) => (
-            <SelectItem
-              key={type}
-              value={type}
-              className="flex cursor-pointer items-center gap-2 text-white p-2"
-            >
-              {type}
-            </SelectItem>
-          ))}
-        </CustomFormField>
+          fieldType={FormFieldType.SKELETON}
+          name="identificationDocument"
+          label="Scanned copy of identification document"
+          renderSkeleton={(field) => (
+            <FormControl>
+              <FileUploader files={field.value} onChange={field.onChange} />
+            </FormControl>
+          )}
+        />
+
+        <section className="space-y-6">
+          <div className="mb-9 space-y-1">
+            <h2 className="sub-header">Consent and Privacy</h2>
+          </div>
+        </section>
+
+        {/* TREATMENT CONSENT */}
+        <CustomFormField
+          fieldType={FormFieldType.CHECKBOX}
+          control={form.control}
+          name="treatmentConsent"
+          label="I consent to treatment"
+        />
+
+        {/* DISCLOSURE CONSENT */}
+        <CustomFormField
+          fieldType={FormFieldType.CHECKBOX}
+          control={form.control}
+          name="disclosureConsent"
+          label="I consent to disclosure information"
+        />
+
+        {/* PRIVACY CONSENT */}
+        <CustomFormField
+          fieldType={FormFieldType.CHECKBOX}
+          control={form.control}
+          name="privacyConsent"
+          label="I consent to privacy policy"
+        />
 
         <SubmitButton isLoading={isLoading}>Submit</SubmitButton>
       </form>

@@ -65,8 +65,8 @@ export const RegisterForm = ({ user }: { user: User }) => {
         className="space-y-8 text-[var(--color-light-200)]"
       >
         <section className="mb-12 space-y-4">
-          <h1 className="header">Welcome to Clina</h1>
-          <p className="text-dark-700">Let us know more about yourself</p>
+          <h1 className="header">Welcome to Clina 👋</h1>
+          <p className="text-dark-700">Let us know more about yourself.</p>
         </section>
 
         <section className="space-y-6">
@@ -143,11 +143,11 @@ export const RegisterForm = ({ user }: { user: User }) => {
           />
         </div>
 
-        {/* <section className="space-y-6">
+        <section className="space-y-6">
           <div className="mb-9 space-y-1">
             <h2 className="sub-header">Medical Information</h2>
           </div>
-        </section> */}
+        </section>
 
         {/* PRIMARY CARE PHYSICIAN */}
         <CustomFormField
@@ -173,11 +173,47 @@ export const RegisterForm = ({ user }: { user: User }) => {
           ))}
         </CustomFormField>
 
-        <div className="flex flex-col gap-6 xl:flex-row"></div>
+        <div className="flex flex-col gap-6 xl:flex-row">
+          {/* ADDRESS */}
+          <CustomFormField
+            fieldType={FormFieldType.INPUT}
+            control={form.control}
+            name="address"
+            label="Address"
+            placeholder="14th Street, NY"
+          />
 
-        <div className="flex flex-col gap-6 xl:flex-row"></div>
+          {/* OCCUPATION */}
+          <CustomFormField
+            fieldType={FormFieldType.INPUT}
+            control={form.control}
+            name="occupation"
+            label="Occupation"
+            placeholder="Software Engineer"
+          />
+        </div>
 
-        <SubmitButton isLoading={isLoading}>Get Started</SubmitButton>
+        <div className="flex flex-col gap-6 xl:flex-row">
+          {/* EMERGENCY CONTACT NAME */}
+          <CustomFormField
+            fieldType={FormFieldType.INPUT}
+            control={form.control}
+            name="emergencyContactName"
+            label="Emergency contact name"
+            placeholder="Guardian's name"
+          />
+
+          {/* EMERGENCY CONTACT NUMBER*/}
+          <CustomFormField
+            fieldType={FormFieldType.PHONE_INPUT}
+            control={form.control}
+            name="emergencyContactNumber"
+            label="Emergency contact number"
+            placeholder="(555) 123-4567"
+          />
+        </div>
+
+        <SubmitButton isLoading={isLoading}>Submit</SubmitButton>
       </form>
     </Form>
   );

@@ -71,6 +71,8 @@ export const RegisterForm = ({ user }: { user: User }) => {
     } catch (error) {
       console.log(error);
     }
+
+    setIsLoading(false);
   };
 
   // DEFINE FORM FIELD STRUCTURE

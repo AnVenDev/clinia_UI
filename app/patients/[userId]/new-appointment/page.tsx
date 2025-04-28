@@ -1,9 +1,13 @@
 import React from "react";
-import Link from "next/link";
 import Image from "next/image";
 import { AppointmentForm } from "@/components/forms/AppointmentForm";
+import { getPatient } from "@/lib/actions/patient.actions";
 
-const NewAppointment = () => {
+export default async function NewAppointment({ params }: SearchParamProps) {
+  const prms = await params;
+  const userId = prms.userId;
+  const patient = await getPatient(userId);
+
   return (
     <div className="flex h-screen max-h-screen">
       {/* Login Page Left Side */}
@@ -17,11 +21,13 @@ const NewAppointment = () => {
             className="mb-12 h-10 w-fit"
           />
 
-          <AppointmentForm />
+          <AppointmentForm
+            type="create"
+            userId={userId}
+            patientId={patient.$id}
+          />
 
-          <p className="justify-items-end text-dark-600 xl:text-left">
-            © 2024 Healthcare Ai Powered
-          </p>
+          <p className="copyright py-12">© 2024 Healthcare Ai Powered</p>
         </div>
       </section>
 
@@ -35,6 +41,4 @@ const NewAppointment = () => {
       />
     </div>
   );
-};
-
-export default NewAppointment;
+}

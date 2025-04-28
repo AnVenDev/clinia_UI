@@ -37,14 +37,6 @@ export const RegisterForm = ({ user }: { user: User }) => {
     },
   });
 
-  // useEffect(() => {
-  //   const subscription = form.watch((values) => {
-  //     console.log("Form values:", values);
-  //   });
-  //   console.log(form.getValues());
-  //   return () => subscription.unsubscribe();
-  // }, [form]);
-
   // SUBMIT DATA FOR REGISTRATION
   const onSubmit = async (values: z.infer<typeof PatientFormValidation>) => {
     setIsLoading(true);

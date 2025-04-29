@@ -100,7 +100,7 @@
   }
 
   .request-details {
-    @apply flex w-full flex-col items-center gap-8 border-y-2 border-[var(--color-dark-400)] py-8 md:w-fit md:flex-row;
+    @apply flex w-full flex-col items-center gap-8 border-y-2 border-[var(--color-dark-400)] py-8 md:w-fit md:flex-row text-white;
   }
 
   /* ADMIN */

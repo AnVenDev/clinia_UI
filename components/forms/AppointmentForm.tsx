@@ -8,7 +8,6 @@ import SubmitButton from "../SubmitButton";
 import { Dispatch, SetStateAction, useState } from "react";
 import { getAppointmentSchema, UserFormValidation } from "@/lib/validation";
 import { useRouter } from "next/navigation";
-import { createUser } from "@/lib/actions/patient.actions";
 import { FormFieldType } from "./PatientForm";
 import { SelectItem } from "../ui/select";
 import Image from "next/image";
@@ -19,7 +18,7 @@ import {
   updateAppointment,
 } from "@/lib/actions/appointment.actions";
 
-// PATIENT LOGIN FORM
+// APPOINTMENT FORM
 export const AppointmentForm = ({
   userId,
   patientId,
@@ -35,6 +34,8 @@ export const AppointmentForm = ({
 }) => {
   const router = useRouter();
   const [isLoading, setIsLoading] = useState(false);
+
+  // SET APPOINTMENT FORM VALIDATION BASED ON ITS TYPE
   const AppointmentFormValidation = getAppointmentSchema(type);
 
   const form = useForm<z.infer<typeof AppointmentFormValidation>>({
@@ -56,6 +57,7 @@ export const AppointmentForm = ({
   ) => {
     setIsLoading(true);
 
+    // CHECK APPOINTMENT REQUEST TYPE AND SET STATUS BASED ON IT
     let status;
     switch (type) {
       case "schedule":
@@ -69,6 +71,7 @@ export const AppointmentForm = ({
     }
 
     try {
+      // IF AN APPOINTMENT IS BEING CREATED
       if (type === "create" && patientId) {
         const appointment = {
           userId,
@@ -89,6 +92,7 @@ export const AppointmentForm = ({
           );
         }
       } else {
+        // IF AN APPOINTMENT IS BEING CANCELLED OR SCHEDULED
         const appointmentToUpdate = {
           userId,
           appointmentId: appointment?.$id!,

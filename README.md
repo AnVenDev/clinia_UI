@@ -25,12 +25,12 @@ It also connects to external AI microservices for language and voice understandi
 
 ## 🧠 AI Technologies Used (external microservices)
 
-- LLMs (BERT, BioBERT, LLaMA) via Hugging Face or custom endpoints
+- LLMs (BERT, BioBERT, LLaMA) via Hugging Face (or custom endpoints)
 - NLP pipelines for document parsing, summarization, anonymization
 - Voice analysis with Whisper / pyannote-audio (planned)
 - PyTorch and Transformers-based APIs served via FastAPI
 
-These services are **external to the frontend** and connect via secure API calls.
+# These services are **external to the frontend** and connect via secure API calls.
 
 ---
 

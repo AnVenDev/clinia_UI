@@ -66,6 +66,7 @@ The project is organized for modularity and scalability:
 ## 📜 License
 
 MIT License
+
 You are free to use, modify, and adapt this project for commercial and non-commercial purposes.
 
 ---

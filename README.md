@@ -65,14 +65,10 @@ The project is organized for modularity and scalability:
 
 ## 📜 License
 
-MIT License
-
-You are free to use, modify, and adapt this project for commercial and non-commercial purposes.
+MIT License: you are free to use, modify, and adapt this project for commercial and non-commercial purposes.
 
 ---
 
 ## ✨ Author
 
-Developed by Andrea Venè,
-
-Combining technology, empathy, and AI to redefine healthcare experiences.
+Developed by Andrea Venè, combining technology, empathy, and AI to redefine healthcare experiences.

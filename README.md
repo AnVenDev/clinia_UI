@@ -58,7 +58,7 @@ The project is organized for modularity and scalability:
 
 ## 📌 Notes
 
-- AI-powered features (chatbot, summarizer, emotion analysis) are managed by external microservices not included in this repository.
+- AI-powered features (chatbot, summarizer, emotion analysis) are managed by external microservices NOT included in this repository.
 - You are free to connect to your own AI models or use existing endpoints (e.g., OpenAI, Hugging Face Spaces, or custom FastAPI servers).
 
 ---

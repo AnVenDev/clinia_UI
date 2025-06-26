@@ -1,6 +1,6 @@
-# ClinaAI – Intelligent Healthcare Platform (Frontend + Appwrite + AI Modules)
+# CliniaAI – Intelligent Healthcare Platform (Frontend + Appwrite + AI Modules)
 
-**ClinaAI** is an advanced platform designed to simplify and enhance healthcare operations through intelligent appointment scheduling, multimodal communication, and the integration of cutting-edge AI technologies, including **Machine Learning (ML)**, **Deep Learning (DL)**, **Natural Language Processing (NLP)**, and **Large Language Models (LLM)**.
+**CliniaAI** is an advanced platform designed to simplify and enhance healthcare operations through intelligent appointment scheduling, multimodal communication, and the integration of cutting-edge AI technologies, including **Machine Learning (ML)**, **Deep Learning (DL)**, **Natural Language Processing (NLP)**, and **Large Language Models (LLM)**.
 
 This repository contains the **frontend application**, developed in **Next.js**, with a **multi-role interface** (patients, doctors, secretaries, administrators) and integrated with **Appwrite** for authentication, data management, and file storage.  
 It also connects to external AI microservices for language and voice understanding.

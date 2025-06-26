@@ -3,32 +3,32 @@
 **CliniaAI** is an advanced platform designed to simplify and enhance healthcare operations through intelligent appointment scheduling, multimodal communication, and the integration of cutting-edge AI technologies, including **Machine Learning (ML)**, **Deep Learning (DL)**, **Natural Language Processing (NLP)**, and **Large Language Models (LLM)**.
 
 This repository contains the **frontend application**, developed in **Next.js**, with a **multi-role interface** (patients, doctors, secretaries, administrators) and integrated with **Appwrite** for authentication, data management, and file storage.  
-It also connects to external AI microservices for language and voice understanding.
+It also connects to **external AI microservices** for language and voice understanding.
 
 ---
 
 ## 🔑 Key Features
 
-- Secure authentication via Appwrite (email, magic link, OTP)
-- Personalized dashboards for each user role
-- Intelligent medical calendar and appointment scheduling
-- Automated reminders via WhatsApp and voice (text-to-speech)
-- Integration with NLP-based chatbot and voicebot for patient support
-- Upload and management of medical documents using Appwrite Storage
+- Secure authentication via **Appwrite** (email, magic link, OTP)
+- Personalized **dashboards** for each user role
+- Intelligent medical calendar and appointment **scheduling**
+- Automated **reminders** via WhatsApp and voice (text-to-speech)
+- Integration with NLP-based **chatbot** and **voicebot** for patient support
+- Upload and management of medical **documents** using Appwrite Storage
 - AI modules for:
-  - Sentiment and emotion detection in patient communication
-  - Clinical note summarization and entity extraction (NER)
-  - Psychological triage and mental health analysis via LLMs
-  - Symptom classification and condition suggestion
+  - **Sentiment** and **emotion** detection in patient communication
+  - Clinical note summarization and entity extraction (**NER**)
+  - **Psychological** triage and mental health analysis via LLMs
+  - **Symptom** classification and condition suggestion
 
 ---
 
 ## 🧠 AI Technologies Used (external microservices)
 
-- LLMs (BERT, BioBERT, LLaMA) via Hugging Face (or custom endpoints)
-- NLP pipelines for document parsing, summarization, anonymization
-- Voice analysis with Whisper / pyannote-audio (planned)
-- PyTorch and Transformers-based APIs served via FastAPI
+- **LLMs** (BERT, BioBERT, LLaMA) via Hugging Face (or custom endpoints)
+- **NLP** pipelines for document parsing, summarization, anonymization
+- **Voice analysis** with Whisper / pyannote-audio (planned)
+- **PyTorch** and Transformers-based APIs served via **FastAPI**
 
 **NOTE**: These services are **external to the frontend** and connect via secure API calls.
 
@@ -58,17 +58,17 @@ The project is organized for modularity and scalability:
 
 ## 📌 Notes
 
-- AI-powered features (chatbot, summarizer, emotion analysis) are managed by external microservices NOT included in this repository.
+- AI-powered features (chatbot, summarizer, emotion analysis) are managed by external microservices **NOT** included in this repository.
 - You are free to connect to your own AI models or use existing endpoints (e.g., OpenAI, Hugging Face Spaces, or custom FastAPI servers).
 
 ---
 
 ## 📜 License
 
-MIT License: you are free to use, modify, and adapt this project for commercial and non-commercial purposes.
+**MIT License**: you are free to use, modify, and adapt this project for commercial and non-commercial purposes.
 
 ---
 
 ## ✨ Author
 
-Developed by Andrea Venè, combining technology, empathy, and AI to redefine healthcare experiences.
+Developed by **Andrea Venè**, combining technology, empathy, and AI to redefine healthcare experiences.

@@ -59,3 +59,15 @@ The project is organized for modularity and scalability:
 ## 📌 Notes
 - AI-powered features (chatbot, summarizer, emotion analysis) are managed by external microservices not included in this repository.
 - You are free to connect to your own AI models or use existing endpoints (e.g., OpenAI, Hugging Face Spaces, or custom FastAPI servers).
+
+---
+
+## 📜 License
+MIT License
+You are free to use, modify, and adapt this project for commercial and non-commercial purposes.
+
+---
+
+## ✨ Author
+Developed by Andrea Venè
+Combining technology, empathy, and AI to redefine healthcare experiences.

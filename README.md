@@ -73,5 +73,6 @@ You are free to use, modify, and adapt this project for commercial and non-comme
 
 ## ✨ Author
 
-Developed by Andrea Venè
+Developed by Andrea Venè,
+
 Combining technology, empathy, and AI to redefine healthcare experiences.

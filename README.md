@@ -30,7 +30,7 @@ It also connects to external AI microservices for language and voice understandi
 - Voice analysis with Whisper / pyannote-audio (planned)
 - PyTorch and Transformers-based APIs served via FastAPI
 
-#### NOTE: These services are **external to the frontend** and connect via secure API calls.
+**NOTE**: These services are **external to the frontend** and connect via secure API calls.
 
 ---
 
